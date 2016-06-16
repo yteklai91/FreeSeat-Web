@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="css/style.css" type="text/css">
+<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -22,7 +23,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body id="page-top">
+<body id="page-top" >
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
 <div class="container">
 	<!-- Brand and toggle get grouped for better mobile display -->
@@ -54,32 +55,53 @@
 	</div>
 	<!-- /.navbar-collapse -->
 </div>
+
 <!-- /.container -->
 </nav>
-<div class="clearfix"><div class="clearfix">
-<section id="form">
+
+<div class="clearfix">
+</div>
+
+
+<section id="form" class="parallax parallax-image" style="background-colour:orange">
 
 <div class="row">
-	<div class="col-lg-12 text-center">
+	<div class="col-lg-1 text-center">
+		<h2 class="section-heading"></h2>
+		
+	</div>
+    <div class="col-lg-1 text-center">
+		<h2 class="section-heading"></h2>
+		
+	</div>
+    <div class="col-lg-12 text-center">
 		<h2 class="section-heading"><b>Register</b></h2>
 		<hr class="primary">
 	</div>
+
   
 </div>
 
-<div class="container">
+
+
+<div class="container" >
     
-    <form class="form-horizontal">
+
+   <!-- <div ng-show="goCat"><h2>Welcome {{helloTo.title}} to the world of Tutorialspoint!</h2></div> -->
+
+
+    <form name="myForm" class="form-horizontal" ng-app = "myapp" ng-controller = "HelloController" ng-valid="formComplete">
 <fieldset>
 
 <!-- Form Name -->
+ <div><h2>Welcome {{formComplete}} {{helloTo.employeeselect}} {{UserType.currentUserType}} {{UserType.NameModel}} {{UserType.SurnameModel}} {{UserType.EmailModel}} {{UserType.Password}} {{UserType.CompanyName}} {{UserType.CompanyAddress}} {{UserType.PostCode}} {{UserType.Telephone}} {{UserType.CompanyID}} to the world of Tutorialspoint!</h2></div> 
 
 
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Name</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="">
+  <input id="textinput" name="nname" ng-model="UserType.NameModel" type="text" placeholder="" class="form-control input-md" required="">
     
   </div>
 </div>
@@ -88,17 +110,89 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Surname">Surname</label>  
   <div class="col-md-4">
-  <input id="Surname" name="Surname" type="text" placeholder="" class="form-control input-md" required="">
+  <input id="Surname" name="ssurname" ng-model="UserType.SurnameModel" type="text" placeholder="" class="form-control input-md" required="">
     
   </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="UserType.Email">Email Address</label>  
+  <div class="col-md-4">
+  <input id="Text1" name="eemail" id="email" ng-model="UserType.EmailModel" type="email" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+
+
 </div>
 
 <!-- Password input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="passwordinput">Password</label>
   <div class="col-md-4">
-    <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md" required="">
+    <input id="passwordinput" name="ppassword" ng-model="UserType.Password" type="password" placeholder="" class="form-control input-md" required="">
     
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Registration Type</label>
+  <div class="col-md-4">
+    <select id="selectbasic" name="selectbasic" class="form-control" data-ng-model="UserType.currentUserType" data-ng-options="act for act in UT" ng-change="change()">
+    </select>
+  </div>
+</div>
+
+<div class="form-group" ng-show="businessDetails">
+  <label class="col-md-4 control-label" for="CompName">Company Name</label>  
+  <div class="col-md-4">
+  <input id="Text2" name="ccompname" type="text" ng-model="UserType.CompanyName" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group" ng-show="businessDetails">
+  <label class="col-md-4 control-label" for="Address">Company Address</label>  
+  <div class="col-md-4">
+  <input id="Address" name="ccompaddress" type="text" ng-model="UserType.CompanyAddress" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group" ng-show="businessDetails">
+  <label class="col-md-4 control-label" for="PostCode">Post Code</label>  
+  <div class="col-md-4">
+  <input id="PostCode" name="ppostcode" ng-model="UserType.PostCode" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group" ng-show="businessDetails">
+  <label class="col-md-4 control-label" for="Telephone">Telephone #</label>  
+  <div class="col-md-4">
+  <input id="Telephone" name="ttelephone" type="text" ng-model="UserType.Telephone" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group" ng-show="emploeeDetails">
+  <label class="col-md-4 control-label" for="CompanyID">Company ID</label>  
+  <div class="col-md-4">
+  <input id="CompID" name="ccompid" type="text" ng-model="UserType.CompanyID" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group" opacity="0.2">
+  <label class="col-md-4 control-label" for="Submit"></label>  
+  <div class="col-md-4">
+  <button id="SubmitButtonID" name="Submit"  class="btn btn-primary" ng-show="(myForm.nname.$valid && myForm.ssurname.$valid && myForm.eemail.$valid && myForm.ppassword.$valid && myForm.ccompname.$valid && myForm.ccompaddress.$valid && myForm.ppostcode.$valid && myForm.ttelephone.$valid || myForm.nname.$valid && myForm.ssurname.$valid && myForm.eemail.$valid && myForm.ppassword.$valid && myForm.ccompid.$valid)" ng-click="buttonClicked()">Submit</button>
+ 
   </div>
 </div>
 
@@ -297,6 +391,82 @@
 <script src="js/jquery.easing.min.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/common.js"></script>
+<script src="js/index.js"></script>
 
+   <script>
+       angular.module("myapp", [])
+
+         .controller("HelloController", function ($scope) {
+             $scope.helloTo = {};
+             $scope.helloTo.title = "AngularJS";
+             $scope.businessDetails = false;
+             $scope.emploeeDetails = false;
+             $scope.submitButton = false;
+
+
+             $scope.UserType = {
+                 currentUserType: "Please Select",
+                 NameModel: "",
+                 SurnameModel: "",
+                 EmailModel: "",
+                 Password: "",
+                 CompanyName: "",
+                 CompanyAddress: "",
+                 PostCode: "",
+                 Telephone: "",
+                 CompanyID: "",
+                 random: ""
+
+             };
+
+             $scope.UT = ["Business Owner", "Employee"];
+
+             /*
+             var e = document.getElementById("selectbasic");
+             var strUser = e.options[e.selectedIndex].value;
+             $scope.helloTo.employeeselect = strUser;
+
+         
+             */
+
+             $scope.change = function () {
+
+                 if ($scope.UserType.currentUserType == "Business Owner") {
+
+
+                     $scope.businessDetails = true;
+                     $scope.emploeeDetails = false;
+                     $scope.submitButton = true;
+                     $scope.UserType.CompanyID = "";
+
+                 } else if ($scope.UserType.currentUserType == "Employee") {
+
+                     $scope.businessDetails = false;
+                     $scope.emploeeDetails = true;
+                     $scope.submitButton = true;
+                     $scope.UserType.CompanyName = "";
+                     $scope.UserType.CompanyAddress = "";
+                     $scope.UserType.PostCode = "";
+                     $scope.UserType.Telephone = "";
+
+                 } else {
+
+                     $scope.businessDetails = false;
+                     $scope.emploeeDetails = false;
+                     $scope.submitButton = false;
+
+                 }
+
+             };
+
+             $scope.buttonClicked = function () {
+
+                 $scope.UserType.random = "Clicked";
+
+             }
+
+
+         });
+      </script>
 
 </body>
