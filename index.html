@@ -1,0 +1,472 @@
+﻿ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>FreeSeat - Appointment Manager</title>
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+<!-- Custom Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Mrs+Sheppards%7CDosis:300,400,700%7COpen+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800;' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+<!-- Plugin CSS -->
+<link rel="stylesheet" href="css/animate.min.css" type="text/css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body id="page-top" >
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+<div class="container">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand page-scroll" href="#page-top"><!-- <img src="img/logo.png" alt="logolayana"> --> <h1 class="bottombrand wow flipInX">F</h1></a>
+	</div>
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+			<a class="page-scroll" href="#page-top">Register</a>
+			</li>
+			<li>
+			<a class="page-scroll" href="#about">About</a>
+			</li>
+            <li>
+			<a class="page-scroll" href="#connect">Connect</a>
+			</li>
+			<li>
+			<a class="page-scroll" href="#contact">Contact</a>
+			</li>
+		</ul>
+	</div>
+	<!-- /.navbar-collapse -->
+</div>
+
+<!-- /.container -->
+</nav>
+
+<div class="clearfix">
+</div>
+
+
+<section id="form" class="parallax parallax-image" style="background-colour:orange">
+
+<div class="row">
+	<div class="col-lg-1 text-center">
+		<h2 class="section-heading"></h2>
+		
+	</div>
+    <div class="col-lg-1 text-center">
+		<h2 class="section-heading"></h2>
+		
+	</div>
+    <div class="col-lg-12 text-center">
+		<h2 class="section-heading"><b>Register</b></h2>
+		<hr class="primary">
+	</div>
+
+  
+</div>
+
+
+
+<div class="container" >
+    
+
+   <!-- <div ng-show="goCat"><h2>Welcome {{helloTo.title}} to the world of Tutorialspoint!</h2></div> -->
+
+
+    <form name="myForm" class="form-horizontal" ng-app = "myapp" ng-controller = "HelloController" ng-valid="formComplete">
+<fieldset>
+
+<!-- Form Name -->
+ <div><h2>Welcome {{formComplete}} {{helloTo.employeeselect}} {{UserType.currentUserType}} {{UserType.NameModel}} {{UserType.SurnameModel}} {{UserType.EmailModel}} {{UserType.Password}} {{UserType.CompanyName}} {{UserType.CompanyAddress}} {{UserType.PostCode}} {{UserType.Telephone}} {{UserType.CompanyID}} to the world of Tutorialspoint!</h2></div> 
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Name</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="nname" ng-model="UserType.NameModel" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Surname">Surname</label>  
+  <div class="col-md-4">
+  <input id="Surname" name="ssurname" ng-model="UserType.SurnameModel" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="UserType.Email">Email Address</label>  
+  <div class="col-md-4">
+  <input id="Text1" name="eemail" id="email" ng-model="UserType.EmailModel" type="email" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+
+
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput">Password</label>
+  <div class="col-md-4">
+    <input id="passwordinput" name="ppassword" ng-model="UserType.Password" type="password" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Registration Type</label>
+  <div class="col-md-4">
+    <select id="selectbasic" name="selectbasic" class="form-control" data-ng-model="UserType.currentUserType" data-ng-options="act for act in UT" ng-change="change()">
+    </select>
+  </div>
+</div>
+
+<div class="form-group" ng-show="businessDetails">
+  <label class="col-md-4 control-label" for="CompName">Company Name</label>  
+  <div class="col-md-4">
+  <input id="Text2" name="ccompname" type="text" ng-model="UserType.CompanyName" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group" ng-show="businessDetails">
+  <label class="col-md-4 control-label" for="Address">Company Address</label>  
+  <div class="col-md-4">
+  <input id="Address" name="ccompaddress" type="text" ng-model="UserType.CompanyAddress" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group" ng-show="businessDetails">
+  <label class="col-md-4 control-label" for="PostCode">Post Code</label>  
+  <div class="col-md-4">
+  <input id="PostCode" name="ppostcode" ng-model="UserType.PostCode" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group" ng-show="businessDetails">
+  <label class="col-md-4 control-label" for="Telephone">Telephone #</label>  
+  <div class="col-md-4">
+  <input id="Telephone" name="ttelephone" type="text" ng-model="UserType.Telephone" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group" ng-show="emploeeDetails">
+  <label class="col-md-4 control-label" for="CompanyID">Company ID</label>  
+  <div class="col-md-4">
+  <input id="CompID" name="ccompid" type="text" ng-model="UserType.CompanyID" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group" opacity="0.2">
+  <label class="col-md-4 control-label" for="Submit"></label>  
+  <div class="col-md-4">
+  <button id="SubmitButtonID" name="Submit"  class="btn btn-primary" ng-show="(myForm.nname.$valid && myForm.ssurname.$valid && myForm.eemail.$valid && myForm.ppassword.$valid && myForm.ccompname.$valid && myForm.ccompaddress.$valid && myForm.ppostcode.$valid && myForm.ttelephone.$valid || myForm.nname.$valid && myForm.ssurname.$valid && myForm.eemail.$valid && myForm.ppassword.$valid && myForm.ccompid.$valid)" ng-click="buttonClicked()">Submit</button>
+ 
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+</div>
+
+</section>
+
+  <div class="clearfix"><div class="clearfix">
+
+
+
+<section id="about">
+<div class="container">
+<div class="row">
+	<div class="col-lg-12 text-center">
+		<h2 class="section-heading">OUR <b>SERVICES</b></h2>
+		<hr class="primary">
+	</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+	<!-- begin 1st row -->
+	<div class="col-lg-4 col-md-6 text-center">
+		<div class="service-box">
+			<div class="iconbox bg-primary">
+				<i class="fa fa-2x fa-trophy wow bounceIn text-fade"></i>
+			</div>
+			<h3>Visibility</h3>
+			<p class="text-muted">
+				 Duis at risus dignissim, mollis augue quis, congue leo. Curabitur sed lacus ut lectus pharetra malesuada et sit amet ligula.
+			</p>
+		</div>
+	</div>
+	<div class="col-lg-4 col-md-6 text-center">
+		<div class="service-box">
+			<div class="iconbox bg-dark">
+				<i class="fa fa-2x fa-cloud wow bounceIn text-fade" data-wow-delay=".1s"></i>
+			</div>
+			<h3>Manage Appointments</h3>
+			<p class="text-muted">
+				 Duis at risus dignissim, mollis augue quis, congue leo. Curabitur sed lacus ut lectus pharetra malesuada et sit amet ligula.
+			</p>
+		</div>
+	</div>
+	<div class="col-lg-4 col-md-6 text-center">
+		<div class="service-box">
+			<div class="iconbox bg-primary">
+				<i class="fa fa-2x fa-newspaper-o wow bounceIn text-fade" data-wow-delay=".2s"></i>
+			</div>
+			<h3>Rearrange Appointments</h3>
+			<p class="text-muted">
+				 Duis at risus dignissim, mollis augue quis, congue leo. Curabitur sed lacus ut lectus pharetra malesuada et sit amet ligula.
+			</p>
+		</div>
+	</div>
+</div>
+<!-- end 1st row -->
+<br/>
+<div class="row">
+	<!-- begin 2nd row -->
+	<div class="col-lg-6 col-md-6 text-center">
+		<div class="service-box">
+			<div class="iconbox bg-dark">
+				<i class="fa fa-2x fa-yelp wow bounceIn text-fade"></i>
+			</div>
+			<h3>Reviews</h3>
+			<p class="text-muted">
+				 Duis at risus dignissim, mollis augue quis, congue leo. Curabitur sed lacus ut lectus pharetra malesuada et sit amet ligula.
+			</p>
+		</div>
+	</div>
+	<div class="col-lg-6 col-md-6 text-center">
+		<div class="service-box">
+			<div class="iconbox bg-primary">
+				<i class="fa fa-2x fa-wordpress wow bounceIn text-fade" data-wow-delay=".1s"></i>
+			</div>
+			<h3>Something else here</h3>
+			<p class="text-muted">
+				 Duis at risus dignissim, mollis augue quis, congue leo. Curabitur sed lacus ut lectus pharetra malesuada et sit amet ligula.
+			</p>
+		</div>
+	</div>
+	
+	</div>
+</div>
+<!-- end 2nd row -->
+</div>
+</section>
+
+<!-- Section Social
+================================================== -->
+<section id="connect" class="parallax parallax-image" style="background-image:url(https://s3-eu-west-1.amazonaws.com/layanademo/s3-min.jpg);">
+<div class="overlay" style="background:#222;opacity:0.5;">
+</div>
+<div class="wrapsection">
+<div class="container">
+	<div class="parallax-content">
+		<div class="row wow fadeInLeft">
+			<div class="col-md-3">
+				<div class="funfacts text-center">
+					<div class="icon">
+						<a href="#"><i class="fa fa-twitter"></i></a>
+					</div>
+					<h4>Twitter</h4>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="funfacts text-center">
+					<div class="icon">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+					</div>
+					<h4>Facebook</h4>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="funfacts text-center">
+					<div class="icon">
+						<a href="#"><i class="fa fa-google"></i></a>
+					</div>
+					<h4>Google</h4>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="funfacts text-center">
+					<div class="icon">
+						<a href="#"><i class="fa fa-wordpress"></i></a>
+					</div>
+					<h4>Blog</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</section>
+<div class="clearfix">
+</div>
+<section />
+
+<!-- Section Contact
+================================================== -->
+<section id="contact">
+<div class="container">
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 text-center">
+		<h2 class="section-heading">CONTACT <b>US</b></h2>
+		<hr class="primary">
+		<p>
+			 Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
+		</p>
+		<div class="regularform">
+			<div class="done">
+				<div class="alert alert-success">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					Your message has been sent. Thank you!
+				</div>
+			</div>
+			<form method="post" action="contact.php" id="contactform" class="text-left">
+				<input name="name" type="text" class="col-md-6 norightborder" placeholder="Your Name *">
+				<input name="email" type="email" class="col-md-6" placeholder="E-mail address *">
+				<textarea name="comment" class="col-md-12" placeholder="Message *"></textarea>
+				<input type="submit" id="submit" class="contact submit btn btn-primary btn-xl" value="Send message">
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</section>
+
+<!-- Section Footer
+================================================== -->
+<section class="bg-dark">
+<div class="container">
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h1 class="bottombrand wow flipInX">FreeSeat</h1>
+		<p>
+			&copy; 2016 MJ - YT
+		</p>
+	</div>
+</div>
+</div>
+</section>
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/parallax.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/countto.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/index.js"></script>
+
+   <script>
+       angular.module("myapp", [])
+
+         .controller("HelloController", function ($scope) {
+             $scope.helloTo = {};
+             $scope.helloTo.title = "AngularJS";
+             $scope.businessDetails = false;
+             $scope.emploeeDetails = false;
+             $scope.submitButton = false;
+
+
+             $scope.UserType = {
+                 currentUserType: "Please Select",
+                 NameModel: "",
+                 SurnameModel: "",
+                 EmailModel: "",
+                 Password: "",
+                 CompanyName: "",
+                 CompanyAddress: "",
+                 PostCode: "",
+                 Telephone: "",
+                 CompanyID: "",
+                 random: ""
+
+             };
+
+             $scope.UT = ["Business Owner", "Employee"];
+
+             /*
+             var e = document.getElementById("selectbasic");
+             var strUser = e.options[e.selectedIndex].value;
+             $scope.helloTo.employeeselect = strUser;
+
+         
+             */
+
+             $scope.change = function () {
+
+                 if ($scope.UserType.currentUserType == "Business Owner") {
+
+
+                     $scope.businessDetails = true;
+                     $scope.emploeeDetails = false;
+                     $scope.submitButton = true;
+                     $scope.UserType.CompanyID = "";
+
+                 } else if ($scope.UserType.currentUserType == "Employee") {
+
+                     $scope.businessDetails = false;
+                     $scope.emploeeDetails = true;
+                     $scope.submitButton = true;
+                     $scope.UserType.CompanyName = "";
+                     $scope.UserType.CompanyAddress = "";
+                     $scope.UserType.PostCode = "";
+                     $scope.UserType.Telephone = "";
+
+                 } else {
+
+                     $scope.businessDetails = false;
+                     $scope.emploeeDetails = false;
+                     $scope.submitButton = false;
+
+                 }
+
+             };
+
+             $scope.buttonClicked = function () {
+
+                 $scope.UserType.random = "Clicked";
+
+             }
+
+
+         });
+      </script>
+
+</body>
